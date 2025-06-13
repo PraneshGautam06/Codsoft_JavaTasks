@@ -1,0 +1,66 @@
+package bank.org;
+
+import java.util.Scanner;
+class Checking{
+	private String name;
+	private String acchold;
+	private int amount;
+	public Checking(String name,String acchold,int amount) {
+		this.name=name;
+		this.acchold=acchold;
+		this.amount=amount;
+	}
+	public void withdraw(int nm) {
+		if(amount<nm) {
+			System.out.println("No amount");
+			System.out.println("Available Balance : "+amount);
+			System.out.println("Transaction not SuccessFul");
+			return;
+		}
+		System.out.println("Withdraw successful");
+		amount-=nm;
+        System.out.println("Transaction successful");
+	}
+	public void deposit(int nm) {
+		if(nm<=0) {
+			System.out.print("Invalid amount");
+			System.out.println("Transaction not SuccessFul");
+			return;
+		}
+		amount+=nm;
+		System.out.println("Amount deposited");
+		System.out.println("Transaction Successful ");
+	}
+	public void checkbalance() {
+		System.out.println(amount);
+		System.out.println("Transaction Successful");	
+		}
+}
+public class BankPro {
+public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+	System.out.println("Enter UserName : ");
+	String name=sc.nextLine();
+	System.out.println("Enter AccountHolderName : ");
+	String acchold=sc.nextLine();
+	System.out.println("Enter Amount : ");
+	int amount=sc.nextInt();
+	System.out.println("Enter any one choice");
+	System.out.println("1.Withdraw  2.Deposit  3.CheckBalance");
+	int n=sc.nextInt();
+	Checking obj=new Checking(name,acchold,amount);
+	if(n==1) {
+		System.out.println("Enter the amount : ");
+		int nm=sc.nextInt();
+		obj.withdraw(nm);
+	}
+	if(n==2) {
+		System.out.println("Enter the amount : ");
+		int nm=sc.nextInt();
+		obj.deposit(nm);
+	}
+	if(n==3) {
+		obj.checkbalance();
+	}
+}
+}
